@@ -231,7 +231,6 @@ func (ge *giteaExporter) exportBug(ctx context.Context, b *cache.BugCache, out c
 			map[string]string{
 				metaKeyGiteaId:      idString,
 				metaKeyGiteaUrl:     url,
-				metaKeyGiteaProject: ge.repositoryID,
 				metaKeyGiteaBaseUrl: GiteaBaseUrl,
 			},
 		)

@@ -6,66 +6,8 @@ import (
 	"code.gitea.io/sdk/gitea"
 )
 
-type NoteType int
 
-const (
-	_ NoteType = iota
-	NOTE_COMMENT
-	NOTE_TITLE_CHANGED
-	NOTE_DESCRIPTION_CHANGED
-	NOTE_CLOSED
-	NOTE_REOPENED
-	NOTE_LOCKED
-	NOTE_UNLOCKED
-	NOTE_CHANGED_DUEDATE
-	NOTE_REMOVED_DUEDATE
-	NOTE_ASSIGNED
-	NOTE_UNASSIGNED
-	NOTE_CHANGED_MILESTONE
-	NOTE_REMOVED_MILESTONE
-	NOTE_MENTIONED_IN_ISSUE
-	NOTE_MENTIONED_IN_MERGE_REQUEST
-	NOTE_UNKNOWN
-)
 
-func (nt NoteType) String() string {
-	switch nt {
-	case NOTE_COMMENT:
-		return "note comment"
-	case NOTE_TITLE_CHANGED:
-		return "note title changed"
-	case NOTE_DESCRIPTION_CHANGED:
-		return "note description changed"
-	case NOTE_CLOSED:
-		return "note closed"
-	case NOTE_REOPENED:
-		return "note reopened"
-	case NOTE_LOCKED:
-		return "note locked"
-	case NOTE_UNLOCKED:
-		return "note unlocked"
-	case NOTE_CHANGED_DUEDATE:
-		return "note changed duedate"
-	case NOTE_REMOVED_DUEDATE:
-		return "note remove duedate"
-	case NOTE_ASSIGNED:
-		return "note assigned"
-	case NOTE_UNASSIGNED:
-		return "note unassigned"
-	case NOTE_CHANGED_MILESTONE:
-		return "note changed milestone"
-	case NOTE_REMOVED_MILESTONE:
-		return "note removed in milestone"
-	case NOTE_MENTIONED_IN_ISSUE:
-		return "note mentioned in issue"
-	case NOTE_MENTIONED_IN_MERGE_REQUEST:
-		return "note mentioned in merge request"
-	case NOTE_UNKNOWN:
-		return "note unknown"
-	default:
-		panic("unknown note type")
-	}
-}
 
 // GetNoteType parse a note system and body and return the note type and it content
 func GetNoteType(n *gitea.Note) (NoteType, string) {
